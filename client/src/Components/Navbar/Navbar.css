@@ -1,5 +1,5 @@
 .NavbarItems{
-    background:green;
+    background:black;
     height: 80px;
     justify-content: center;
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 .navbar-logo{
-    color: rgb(255, 255, 255);
+    color: rgb(167, 216, 158);
     margin-left: 20px;
     cursor: pointer;
 
@@ -33,7 +33,7 @@
 }
 
 .nav-links:hover{
-    background-color:rgb(21, 54, 114);
+    background-color:green;
     border-radius: 4px;
     transition: all 0.2s ease-out;
 }
@@ -51,9 +51,10 @@
     display: none;
 }
 
-@media screen and (max-width : 700px) {
+@media screen and (max-width : 800px) {
     .NavbarItems{
         position:relative;
+        color: white;
     }
     .nav-menu {
         display: flex;
@@ -67,7 +68,7 @@
         transform: all 0.5s ease;
     }
     .nav-menu.active{
-        background: green;
+        background: black;
         left: 0;
         opacity: 1;
         transition: all 0.5s ease;
@@ -80,7 +81,7 @@
         display: table;
     }
     .nav-links:hover{
-        background: rgb(21, 54, 114);
+        background: green;
         border-radius: 0;
 
     }

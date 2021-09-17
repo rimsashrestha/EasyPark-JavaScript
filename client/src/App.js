@@ -1,11 +1,11 @@
 import React from 'react';
 import Navbar from "./Components/Navbar/Navbar"
 import './App.css';
-import Home from './Home'
-import About from './About'
-import Guest from './Guest'
-import Contact_Us from './Contact_Us'
-import My_Account from './My_Account'
+import Home from './pages/Home'
+import About from './pages/About'
+import Guest from './pages/Guest'
+import Contact_Us from './pages/Contact_Us'
+import My_Account from './pages/My_Account'
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
