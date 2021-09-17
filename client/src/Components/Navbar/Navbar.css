@@ -33,7 +33,7 @@
 }
 
 .nav-links:hover{
-    background-color:green;
+    background-color:rgb(21, 54, 114);
     border-radius: 4px;
     transition: all 0.2s ease-out;
 }
@@ -51,9 +51,9 @@
     display: none;
 }
 
-@media screen and (max-width : 800px) {
+@media screen and (max-width : 700px) {
     .NavbarItems{
-        position: relative;
+        position:relative;
     }
     .nav-menu {
         display: flex;
@@ -61,7 +61,7 @@
         width: 100%;
         height: 500px;
         position: absolute;
-        top: 80px;
+        top: 79px;
         left: -100%;
         opacity: 1;
         transform: all 0.5s ease;
@@ -75,12 +75,12 @@
     }
     .nav-links{
         text-align: center;
-        padding: 2rem;
+        padding: 1.4rem;
         width: 100%;
         display: table;
     }
     .nav-links:hover{
-        background: green;
+        background: rgb(21, 54, 114);
         border-radius: 0;
 
     }
@@ -97,7 +97,7 @@
         top: 0;
         right: 0;
         transform: translate(-100%, 60%);
-        font-size: 1.8 rem;
+        font-size: 1.8rem;
         cursor: pointer;
     }
     
