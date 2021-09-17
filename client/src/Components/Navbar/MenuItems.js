@@ -21,7 +21,7 @@ export const MenuItems =[
     },
     {
         title: 'My Account',
-        url: 'yy_Account',
+        url: 'my_Account',
         cName: 'nav-links'
     }
 ]
