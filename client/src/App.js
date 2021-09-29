@@ -2,10 +2,10 @@ import React from 'react';
 import Navbar from "./Components/Navbar"
 import './App.css';
 import Home from './pages/homePage/Home'
-import About from './pages/About'
+import About from './pages/aboutPage/About'
 import Guest from './pages/Guest'
-import Contact_Us from './pages/Contact_Us'
-import My_Account from './pages/My_Account'
+import Contact_Us from './pages/contactPage/Contact_Us'
+import My_Account from './pages/accountPage/My_Account'
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Footer from './Components/Footer';
