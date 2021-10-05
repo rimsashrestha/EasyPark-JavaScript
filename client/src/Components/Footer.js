@@ -7,7 +7,8 @@ const useStyles = makeStyles(theme => ({
         color: "white", 
         textAlign: "center", 
         background: 'black'
-    }
+    },
+    
 }));
 
 
@@ -23,7 +24,7 @@ const Footer = () => {
             <div className="row">
                 <div className="column">
                     <h3>Easy ParK</h3>
-                    <ul className="list">
+                    <ul className="list" >
                         <li>123-456-7896</li>
                         <li>abc street</li>
                         <li>Lubbock, Texas, 79415</li>

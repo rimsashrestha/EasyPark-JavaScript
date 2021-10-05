@@ -21,7 +21,8 @@ export const InfoWrapper = styled.div`
     
     max-width: 1000px;
     margin:0 auto;
-    display: grid;
+    display: flex;
+    justify-content: space-between;
     grid-template-columns:1fr 1fr 1fr;
     align-items: center;
     grid-gap: 40px;

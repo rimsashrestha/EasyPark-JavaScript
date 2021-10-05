@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import ReactPlayer from 'react-player';
 import heroVideo from '../../videos/homebg.mp4';
-import info from './info';
+import Info from './info';
 
 const useStyles = makeStyles(theme => ({
   main: {
@@ -27,14 +27,16 @@ const useStyles = makeStyles(theme => ({
   searchBar: {
     padding: '10px',
     width: '300px',
-    backgroundColor: 'white',
+    backgroundColor: 'violet',
     border: '10px',
     fontSize: '20px',
     
   },
   title: {
-    fontFamily:'David Libre',
+    fontFamily:'Merienda',
     paddingBottom: theme.spacing(3),
+    color:'yellow',
+    
   },
 }));
 
@@ -56,7 +58,7 @@ const Hero = () => {
 
         >
           <Typography variant="h3" component="h1" className={classes.title} >
-            <p>GET YOU PARKING PERMIT FROM ANYWHERE</p>
+            <p className={classes.title}>GET YOU PARKING PERMIT FROM ANYWHERE</p>
             Parking made easy.
           </Typography>
           
@@ -69,7 +71,7 @@ const Hero = () => {
           
         </Box>
       </div>
-      <info />
+      <Info />
     </section>
     
   );
