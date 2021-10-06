@@ -39,6 +39,10 @@ body {
     color: black;
   }
   
+  .about-text{
+    font-size: x-large;
+    text-align: center;
+  }
   .container {
     padding: 0 16px;
   }

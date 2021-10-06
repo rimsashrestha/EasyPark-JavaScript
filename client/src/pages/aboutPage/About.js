@@ -1,19 +1,21 @@
 import React from 'react';
 import './AboutStyle.css';
-import imageRimsa from '../../images/Sample.jpg';
-import imageNotFound from '../../images/ImageNotFound.jpg';
-import imageSachin from '../../images/Sachin.jpg';
-import imageNorbu from '../../images/Norbu.jpg';
-import imageBuddharaj from '../../images/Buddharaj.jpg';
-import imageSamrat from '../../images/Samrat.jpg';
+import imageRimsa from '../../images/team/Rimsa.jpg';
+import imageMalik from '../../images/team/Malik.jpg';
+import imageSachin from '../../images/team/Sachin.jpg';
+import imageNorbu from '../../images/team/Norbu.jpg';
+import imageBuddharaj from '../../images/team/Buddharaj.jpg';
+import imageSamrat from '../../images/team/Samrat.jpg';
 
 function About() {
     return (
         <div>
             <div class="about-section">
                 <h1>About Us Page</h1>
-                <p>Welcome to Easy Park, your number one solution to your parking problem.</p>
-                <p>We are dedicated to providing you the very best of parking, with an emphasis on ease of parking</p>
+                <div class="about-text">
+                    <p>Welcome to Easy Park, your number one solution to your parking problem.</p>
+                    <p>We are dedicated to providing you the very best of parking, with an emphasis on ease of parking.</p>
+                </div>
             </div>
             
             <h2 style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>Our Team</h2>
@@ -70,7 +72,7 @@ function About() {
 
                 <div class="column">
                     <div class="card">
-                        <img src={imageNotFound} alt="Malik" class="center"/>
+                        <img src={imageMalik} alt="Malik" class="center"/>
                         <div class="container">
                             <h2>Malik Bakht</h2>
                             <p class="title">Product Developer</p>
