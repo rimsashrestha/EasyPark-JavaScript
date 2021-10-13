@@ -39,6 +39,10 @@ body {
     color: black;
   }
   
+  .about-text{
+    font-size: x-large;
+    text-align: center;
+  }
   .container {
     padding: 0 16px;
   }
@@ -66,7 +70,7 @@ body {
   }
   
   .button:hover {
-    background-color: #555;
+    background-color: green;
   }
   
   @media screen and (max-width: 650px) {
