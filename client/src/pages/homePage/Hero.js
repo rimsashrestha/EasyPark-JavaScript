@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import ReactPlayer from 'react-player';
 import heroVideo from '../../videos/homebg.mp4';
 import Info from './info';
+import { blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   main: {
@@ -27,11 +28,14 @@ const useStyles = makeStyles(theme => ({
   searchBar: {
     padding: '10px',
     width: '300px',
-    backgroundColor: 'violet',
-    border: '10px',
+    backgroundColor: '#fff',
+    border: '5px solid green',
     fontSize: '20px',
+    color:'black'
     
   },
+
+  
   title: {
     fontFamily:'Merienda',
     paddingBottom: theme.spacing(3),
@@ -58,20 +62,21 @@ const Hero = () => {
 
         >
           <Typography variant="h3" component="h1" className={classes.title} >
-            <p className={classes.title}>GET YOU PARKING PERMIT FROM ANYWHERE</p>
+            <p className={classes.title}>GET YOUR PARKING PERMIT FROM ANYWHERE</p>
             Parking made easy.
           </Typography>
           
           <input className={classes.searchBar} 
             type="text" 
             placeholder="Search for Parking or Apartment"
-            placeholderTextColor = {'white'}
+            placeholderTextColor = {'red'}
             placeholderFontSize = "20px" />
             
           
         </Box>
+        
       </div>
-      <Info />
+      
     </section>
     
   );

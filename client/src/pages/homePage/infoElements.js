@@ -21,12 +21,12 @@ export const InfoWrapper = styled.div`
     
     max-width: 1000px;
     margin:0 auto;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     grid-template-columns:1fr 1fr 1fr;
     align-items: center;
     grid-gap: 40px;
     padding:10 50px;
+
 
     @media screen and (max-width: 1000px){
         grid-template-columns: 1fr 1fr;

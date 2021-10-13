@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({limit: "20mb", extended:true}));
 
 app.use(cors());
 
-const CONNECTION_URI = 'mongodb+srv://techtack:easypark@easypark1.kcvg0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const CONNECTION_URI = 'mongodb+srv://TechTach:<password>@easy-park.hylgm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 const PORT = process.env.PORT || 5000;
 
