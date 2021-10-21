@@ -9,13 +9,13 @@ import {
     InfoWrapper } from './infoElements'
 import Icon1 from '../../images/Ppass.jpeg'
 import Icon2 from '../../images/lock.png'
-// eslint-disable-next-line
-import info from './info.css'
+
+
 
 const Info = () => {
     return (
         
-        <InfoContainer id='infomations'>
+        <InfoContainer>
             <InfoH1> Our Services</InfoH1>
             <InfoWrapper>
                 <InfoCard>

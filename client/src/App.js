@@ -26,8 +26,10 @@ function App() {
             <Route path="/account" exact component={My_Account}/>
           </Switch> 
         </div>
-        <Footer />
+        <Footer />              
       </Router>
+      
+
     </>
     
   );

@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
 export const InfoContainer = styled.div`
-    height: 450px;
+    padding-top:10px;
+    padding-bottom: 40px;
+    height: 450px auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    background: #010606;
+    background: #15241C;
 
     @media screen and (max-width: 768px){
         height: 1100px;
@@ -18,15 +20,13 @@ export const InfoContainer = styled.div`
 `
 
 export const InfoWrapper = styled.div`
-    
     max-width: 1000px;
     margin:0 auto;
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
-    // align-items: center;
     justify-content: space-evenly;
-    grid-gap: 40px;
-    padding:10 50px;
+    grid-gap: 50px;
+    padding:0 autos;
 
 
     @media screen and (max-width: 1000px){
