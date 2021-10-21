@@ -4,7 +4,7 @@ export const InfoContainer = styled.div`
     height: 450px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background: #010606;
 
@@ -23,7 +23,8 @@ export const InfoWrapper = styled.div`
     margin:0 auto;
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
-    align-items: center;
+    // align-items: center;
+    justify-content: space-evenly;
     grid-gap: 40px;
     padding:10 50px;
 

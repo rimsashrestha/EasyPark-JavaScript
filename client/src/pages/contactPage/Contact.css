@@ -1,0 +1,10 @@
+.body{
+    padding: 20px 5px;
+    background-image: url(../../images/parkingImage.jpg);
+    background-position: center;
+    background-size: cover;
+    background-blend-mode:color-dodge;
+    
+}
+
+ 

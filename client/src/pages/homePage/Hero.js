@@ -5,7 +5,9 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import ReactPlayer from 'react-player';
 import heroVideo from '../../videos/homebg.mp4';
+// eslint-disable-next-line
 import Info from './info';
+// eslint-disable-next-line
 import { blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
