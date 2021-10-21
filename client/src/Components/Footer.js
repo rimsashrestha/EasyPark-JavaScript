@@ -1,5 +1,7 @@
 import React from 'react'
-
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -94,9 +96,9 @@ const Footer = () => {
                 </Column>
                 <Column>
                     <Title>Social Medias</Title>
-                    <Link href="/">Facebook</Link>
-                    <Link href="/">Twitter</Link>
-                    <Link href = "/">Youtube</Link>
+                    <Link href="https://www.facebook.com"><FacebookIcon /></Link>
+                    <Link href="https://www.twitter.com"><TwitterIcon /></Link>
+                    <Link href = "https://www.youtube.com"><YouTubeIcon /></Link>
                 </Column>
             </Row>
 
