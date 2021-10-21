@@ -17,7 +17,7 @@ function Contact_Us() {
                         <form>
                             <Grid container spacing={1}>
 
-                                <Grid xs={12} sm={6} item>
+                                <Grid git xs={12} sm={6} item>
                                     <TextField label="First Name" placeholder="Enter first Name" variant="outlined" fullWidth required />
                                 </Grid>
                                 <Grid xs={12} sm={6} item>
