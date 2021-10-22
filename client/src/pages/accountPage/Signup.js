@@ -9,7 +9,7 @@ import {
   Checkbox,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormHelperText } from "@material-ui/core";
 import * as Yup from "yup";

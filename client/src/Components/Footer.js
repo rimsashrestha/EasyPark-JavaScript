@@ -4,6 +4,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import styled from 'styled-components'
 
+
 const Container = styled.div`
     min-height:20vh;
     padding: 80px 60px;
@@ -96,9 +97,9 @@ const Footer = () => {
                 </Column>
                 <Column>
                     <Title>Social Medias</Title>
-                    <Link href="https://www.facebook.com"><FacebookIcon /></Link>
-                    <Link href="https://www.twitter.com"><TwitterIcon /></Link>
-                    <Link href = "https://www.youtube.com"><YouTubeIcon /></Link>
+                    <Link href="https://www.facebook.com" target="_blank"><FacebookIcon /></Link>
+                    <Link href="https://www.twitter.com" target="_blank"><TwitterIcon /></Link>
+                    <Link href = "https://www.youtube.com" target="_blank"><YouTubeIcon /></Link>
                 </Column>
             </Row>
 

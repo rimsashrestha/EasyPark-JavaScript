@@ -24,7 +24,7 @@ export const InfoWrapper = styled.div`
     margin:0 auto;
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
-    justify-content: space-evenly;
+    justify-content: space-between;
     grid-gap: 50px;
     padding:0 autos;
 
