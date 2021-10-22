@@ -40,6 +40,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily:'Merienda',
     paddingBottom: theme.spacing(3),
     color:'yellow',
+    textAlign :'center'
     
   },
 }));

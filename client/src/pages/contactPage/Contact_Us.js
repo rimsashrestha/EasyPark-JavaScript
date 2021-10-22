@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
 
 function Contact_Us() {
-    return (
-        <div>
-            <h1>Contact us here</h1>
+  return (
+    <div className="contact_info">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-lg-10 offset-lg-1">
+           Your Contact Page will be here 
+            <div className="contactinfoitem"></div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default Contact_Us
+export default Contact_Us;
