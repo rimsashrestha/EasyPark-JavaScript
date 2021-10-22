@@ -41,4 +41,4 @@ function Contact_Us() {
     )
 }
 
-export default Contact_Us
+export default Contact_Us;

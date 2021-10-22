@@ -1,58 +1,50 @@
-const dotenv = require('dotenv');
-const express = require('express');
-const app = express ();
+const dotenv = require("dotenv");
 const mongoose = require('mongoose');
+const express = require('express');
+const app = express();
 
-dotenv.config({path: './config.env'});
+dotenv.config({ path: './config.env' });
+
 require('./db/conn');
-const User =require('./model/userSchema');
 
-const DB = process.env.DATABASE;
-const PORT  = process.env.PORT
-mongoose.connect(DB, {
-    userNewUrlParser: true,
-    userCreateIndex : true,
-    userUnififedTopology: true,
-    userFindAndModify:falselse
-}).then(() =>{
-    console.log('connection successful');
-}).catch((err) => console.log('no connection'));
+app.use(express.json());
 
-// Middleware
+const User = require('./model/userSchema');
+app.use(require('./router/auth'));
 
-const middleware = (req,res,next)  =>{
-        console.log ('hello my middleware');
+const PORT = process.env.PORT;
+
+
+// Middelware 
+const middleware = (req,res, next) => {
+    console.log(`Hello my Middleware`);
+    next();
 }
 
-middleware();
+// app.get('/', (req, res) => {
+//  res.send(`Hello world from the server app.js`);
+// });
 
-app.get('/' ,(req , res) => {
-    res.send('Hello World from the Server');
-    next();
+app.get('/about', middleware, (req, res) => {
+    console.log(`Hello my About`);
+    res.send(`Hello About world from the server`);
+});
+
+app.get('/contact', (req, res) => {
+    //res.cookie("TEST", 'SHRESTHA' );
+    res.send(`Hello Contact world from the server`);
+});
+
+app.get('/signin', (req, res) => {
+    res.send(`Hello Login world from the server`);
+});
+
+app.get('/signup', (req, res) => {
+    res.send(`Hello Registration world from the server`);
+});
+
+app.listen(PORT, () => {
+    console.log(`server is running at port no ${PORT}`);
 })
 
-app.get('/about' ,middleware, (req , res) => {
-    res.send('Hello About World from the Server');
-})
-
-app.get('/contact' ,middleware, (req , res) => {
-    res.send('Hello Contact World from the Server');
-})
-
-app.get('/home' ,middleware, (req , res) => {
-    res.send('Hello HOme World from the Server');
-})
-
-app.get('/guest' ,middleware, (req , res) => {
-    res.send('Hello guest World from the Server');
-})
-
-app.get('/account ' ,middleware, (req , res) => {
-    res.send('Hello account World from the Server');
-})
-
-app.listen (3000,() => {
-    console.log('server is runnin on ${PORT}');
-
-})
 
