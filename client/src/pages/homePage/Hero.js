@@ -2,13 +2,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+import { Typography } from '@material-ui/core';
 import ReactPlayer from 'react-player';
 import heroVideo from '../../videos/homebg.mp4';
-// eslint-disable-next-line
-import Info from './info';
-// eslint-disable-next-line
-import { blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   main: {
@@ -27,22 +23,22 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
-  searchBar: {
-    padding: '10px',
-    width: '300px',
-    backgroundColor: '#fff',
-    border: '5px solid green',
-    fontSize: '20px',
-    color:'black'
-    
-  },
+  // searchBar: {
+  //   padding: '10px',
+  //   width: '300px',
+  //   backgroundColor: '#fff',
+  //   border: '5px solid green',
+  //   fontSize: '20px',
+  //   color: 'black'
 
-  
+  // },
+
   title: {
-    fontFamily:'Merienda',
+    fontFamily: 'Merienda',
     paddingBottom: theme.spacing(3),
-    color:'yellow',
-    
+    color: 'yellow',
+    textShadow: '3px 3px green',
+
   },
 }));
 
@@ -60,27 +56,20 @@ const Hero = () => {
           justifyContent="center"
           alignItems="center"
           color="white"
-          
-
         >
           <Typography variant="h3" component="h1" className={classes.title} >
             <p className={classes.title}>GET YOUR PARKING PERMIT FROM ANYWHERE</p>
             Parking made easy.
           </Typography>
-          
-          <input className={classes.searchBar} 
+
+          {/* <input className={classes.searchBar} 
             type="text" 
             placeholder="Search for Parking or Apartment"
             placeholderTextColor = {'red'}
-            placeholderFontSize = "20px" />
-            
-          
+            placeholderFontSize = "20px" /> */}
         </Box>
-        
       </div>
-      
     </section>
-    
   );
 };
 

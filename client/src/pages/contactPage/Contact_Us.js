@@ -15,9 +15,9 @@ function Contact_Us() {
                         <Typography gutterBottom variant="h5">Contact Us</Typography>
                         <Typography gutterBottom variant="body" color="textSecondary" component="p">Fill out the form and we will get back to you</Typography>
                         <form>
-                            <Grid container spacing={1}>
+                            <Grid container spacing={2}>
 
-                                <Grid git xs={12} sm={6} item>
+                                <Grid  xs={12} sm={6} item>
                                     <TextField label="First Name" placeholder="Enter first Name" variant="outlined" fullWidth required />
                                 </Grid>
                                 <Grid xs={12} sm={6} item>

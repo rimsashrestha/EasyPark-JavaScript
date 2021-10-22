@@ -3,7 +3,7 @@ import Navbar from "./Components/Navbar"
 import './App.css';
 import Home from './pages/homePage/Home'
 import About from './pages/aboutPage/About'
-import Guest from './pages/Guest'
+import Guest from './pages/guestPage/Guest'
 import Contact_Us from './pages/contactPage/Contact_Us'
 import My_Account from './pages/accountPage/My_Account'
 
