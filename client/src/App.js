@@ -3,13 +3,14 @@ import Navbar from "./Components/Navbar";
 import "./App.css";
 import Home from "./pages/homePage/Home";
 import About from "./pages/aboutPage/About";
-import Guest from "./pages/Guest";
+import Guest from "./pages/guestPage/Guest";
 import Contact_Us from "./pages/contactPage/Contact_Us";
 import Login from "./pages/accountPage/Login";
 import SignInOutContainer from "./containers/index";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Errorpage from "./pages/Errorpage";
+import "./App.css";
 
 function App() {
   return (
