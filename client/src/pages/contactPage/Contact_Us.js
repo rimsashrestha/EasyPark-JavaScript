@@ -1,9 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Typography, Card, CardContent, Grid, TextField, Button } from '@material-ui/core'
 import './Contact.css'
+import axios from 'axios'
 
 
 function Contact_Us() {
+
+    const [input, setInput] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        message:''
+    })
+    function handleChange(event) {
+        const { name, value } = event.target;
+        setInput(prevInput => {
+            return {
+                ...prevInput,
+                [name]: value
+            }
+        })
+    }
+    function handleOnClick(event) {
+        event.preventDefault();
+        const contactInfo = {
+            firstName: input.firstName,
+            lastName: input.lastName,
+            email: input.email,
+            message: input.message,
+            
+        }
+        console.log(contactInfo)
+        axios.post('http://localhost:5000/contact_us', contactInfo);
+        
+    } 
+
+
     return (
         <section>
             <div className="body" >
@@ -18,19 +50,19 @@ function Contact_Us() {
                             <Grid container spacing={2}>
 
                                 <Grid  xs={12} sm={6} item>
-                                    <TextField label="First Name" placeholder="Enter first Name" variant="outlined" fullWidth required />
+                                    <TextField label="First Name" placeholder="Enter first Name" variant="outlined" fullWidth required name="firstName" value = {input.firstName} onChange={handleChange}/>
                                 </Grid>
                                 <Grid xs={12} sm={6} item>
-                                    <TextField label="Last Name" placeholder="Enter Last Name" variant="outlined" fullWidth required />
+                                    <TextField label="Last Name" placeholder="Enter Last Name" variant="outlined" fullWidth required name="lastName" value = {input.lastName} onChange={handleChange}/>
                                 </Grid>
                                 <Grid xs={12} item>
-                                    <TextField type="email" label="Email" placeholder="Enter your email" variant="outlined" fullWidth required />
+                                    <TextField type="email" label="Email" placeholder="Enter your email" variant="outlined" fullWidth required name="email" value = {input.email} onChange={handleChange}/>
                                 </Grid>
                                 <Grid xs={12} item>
-                                    <TextField label="Message/Query" multiline rows={9} placeholder="Enter your message or queries" variant="outlined" fullWidth required />
+                                    <TextField label="Message/Query" multiline rows={9} placeholder="Enter your message or queries" variant="outlined" fullWidth required name="message" value = {input.message} onChange={handleChange}/>
                                 </Grid>
                                 <Grid xs={12} item>
-                                    <Button type="submit" variant="contained" color="primary" fullWidth >Submit</Button>
+                                    <Button type="submit" variant="contained" color="primary" fullWidth onClick={handleOnClick}>Submit</Button>
                                 </Grid>
                             </Grid>
                         </form>

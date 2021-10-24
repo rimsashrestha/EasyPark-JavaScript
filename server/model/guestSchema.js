@@ -1,12 +1,51 @@
-import mongoose from 'mongoose';
-
+const mongoose = require('mongoose');
 const guestSchema = new mongoose.Schema({
-    name: String,
-    phone: Number,
-    VehicleNumber: String,
-    make: String,
-    model: String,
+    location:{
+        type: 'string',
+        required: true,
+    },
+    firstName:{
+        type: 'string',
+        required: true,
+    },
+    lastName:{
+        type: 'string',
+        required: true,
+    },
+    phoneNumber:{
+        type:'Number',
+        required: true,
+    },
+    unitNumber:{
+        type: 'string',
+        required: true,
+    },
+    vehicleMake:{
+        type: 'string',
+        required: true,
+    },
+    vehicleModel:{
+        type: 'string',
+        required: true,
+    },
+    lisencePlate:{
+        type: 'string',
+        required: true,
+    },
+    last4Digits:{
+        type: 'number',
+        required: true,
+    },
+    date:{
+        type:Date,
+        default:Date.now,
+    }
+    
+    
 
-})
 
-export default mongoose.model('guestVehicleInfo', guestSchema);
+},{timestamps: true});
+guestSchema.index({createdAt: 1},{expireAfterSeconds: 120});
+
+const guestVehicleInfo = mongoose.model('guestVehicleInfo', guestSchema);
+module.exports = guestVehicleInfo;

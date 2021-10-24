@@ -2,13 +2,18 @@ const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const guestRouter = require('./router/guestRouter')
+const contact_usRouter = require('./router/contact_usRouter')
+
+
 
 dotenv.config({ path: './config.env' });
 
 require('./db/conn');
 
 app.use(express.json());
-
+app.use(cors());
 const User = require('./model/userSchema');
 app.use(require('./router/auth'));
 
@@ -21,9 +26,10 @@ const middleware = (req,res, next) => {
     next();
 }
 
-// app.get('/', (req, res) => {
-//  res.send(`Hello world from the server app.js`);
-// });
+
+app.use('/guest', guestRouter)
+app.use('/contact_us', contact_usRouter)
+
 
 app.get('/about', middleware, (req, res) => {
     console.log(`Hello my About`);
