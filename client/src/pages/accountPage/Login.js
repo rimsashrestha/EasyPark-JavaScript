@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable */
+import React, { useState } from "react";
 import {
   Grid,
   Paper,
@@ -12,8 +13,36 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { NavLink, useHistory } from "react-router-dom";
 
 const Login = ({ handleChange }) => {
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginUser = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+    const data = res.json();
+
+    if (res.status === 400 || !data) {
+      window.alert("INVALID CREDENTIALS");
+    } else {
+      window.alert("LOGIN SUCCESSFUL");
+      history.push("/");
+    }
+  };
+
   const paperStyle = {
     padding: 20,
     width: 480,
@@ -52,11 +81,13 @@ const Login = ({ handleChange }) => {
           validationSchema={validationSchema}
         >
           {(props) => (
-            <Form>
+            <Form method="POST">
               <Field
                 as={TextField}
                 label="Email"
                 name="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter Your Full Name"
                 fullWidth
                 required
@@ -66,9 +97,12 @@ const Login = ({ handleChange }) => {
                 as={TextField}
                 label="Password"
                 name="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter Your Email"
                 fullWidth
                 required
+                type="password"
                 helperText={<ErrorMessage name="Password" />}
               />
 
@@ -85,6 +119,7 @@ const Login = ({ handleChange }) => {
                 disabled={props.isSubmitting}
                 style={btnstyle}
                 fullWidth
+                onClick={loginUser}
               >
                 {props.isSubmitting ? "Loading" : "Sign In"}
               </Button>

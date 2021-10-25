@@ -9,6 +9,7 @@ import SignInOutContainer from "./containers/index";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Errorpage from "./pages/Errorpage";
+import Logout from "./pages/accountPage/Logout";
 import "./App.css";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
             <Route path="/guest" exact component={Guest} />
             <Route path="/about" exact component={About} />
             <Route path="/contact_us" exact component={Contact_Us} />
-
+            <Route path="/logout" exact component={Logout} />
             <Route path="/account" exact component={SignInOutContainer} />
             <Route>
               <Errorpage />

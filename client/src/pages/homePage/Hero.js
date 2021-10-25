@@ -38,7 +38,6 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(3),
     color: 'yellow',
     textShadow: '3px 3px green',
-
   },
 }));
 
