@@ -31,7 +31,7 @@ const SignUp = () => {
     phone: "",
     apartment: "",
     password: "",
-    confirmPassword: "",
+    cpassword: "",
     TermsAndConditions: false,
   };
 
@@ -45,7 +45,7 @@ const SignUp = () => {
     password: Yup.string()
       .min(8, "Password should be at least 8 characters long")
       .required("Required"),
-    confirmPassword: Yup.string()
+    cpasswored: Yup.string()
       .oneOf([Yup.ref("password")], "Password Does not Match! ")
       .required("Required"),
     TermsAndConditions: Yup.string().oneOf(
@@ -68,7 +68,7 @@ const SignUp = () => {
     phone: "",
     apartment: "",
     password: "",
-    confirmPassword: "",
+    cpassword: "",
   });
 
   let name, value;
@@ -79,13 +79,14 @@ const SignUp = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const PostDate = async (e) => {
+  const PostData = async (e) => {
     e.preventDefault();
 
-    const { name, email, phone, apartment, password, confirmPassword } = user;
+    const { name, email, phone, apartment, password, cpassword } = user;
     const res = await fetch("/register", {
-      method: "POST",
+      method: "post",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -94,7 +95,7 @@ const SignUp = () => {
         phone,
         apartment,
         password,
-        confirmPassword,
+        cpassword,
       }),
     });
 
@@ -105,7 +106,7 @@ const SignUp = () => {
     } else {
       window.alert("REGISTRATION SUCCESSFUL");
       console.log("SUCCESSFUL REGISTRATION");
-      history.push("/login");
+      history.push("/Login");
     }
   };
 
@@ -124,14 +125,15 @@ const SignUp = () => {
           initialValues={initialValues}
           onSubmit={onSubmit}
           validationSchema={validationSchema}
-          method="POST"
         >
           {(props) => (
-            <Form>
+            <Form method="post" action="/register">
               <Field
                 as={TextField}
                 label="Name"
                 name="name"
+                type="text"
+                id="name"
                 value={user.name}
                 onChange={handleInputs}
                 placeholder="Enter Your Full Name"
@@ -144,6 +146,8 @@ const SignUp = () => {
                 as={TextField}
                 label="Email"
                 name="email"
+                type="email"
+                id="email"
                 value={user.email}
                 onChange={handleInputs}
                 placeholder="Enter Your Email"
@@ -156,6 +160,8 @@ const SignUp = () => {
                 as={TextField}
                 label="Phone"
                 name="phone"
+                type="text"
+                id="phone"
                 value={user.phone}
                 onChange={handleInputs}
                 placeholder="Enter Your Phone Number"
@@ -168,6 +174,8 @@ const SignUp = () => {
                 as={TextField}
                 label="Apartment"
                 name="apartment"
+                type="text"
+                id="apartment"
                 value={user.apartment}
                 onChange={handleInputs}
                 placeholder="Enter Your Apartment Unit"
@@ -180,6 +188,7 @@ const SignUp = () => {
                 as={TextField}
                 label="Password"
                 name="password"
+                id="password"
                 value={user.password}
                 onChange={handleInputs}
                 placeholder="Enter Your Password"
@@ -192,8 +201,9 @@ const SignUp = () => {
               <Field
                 as={TextField}
                 label="Confirm Password"
-                name="confirmPassword"
-                value={user.ConfirmPassword}
+                name="cpassword"
+                id="cpassword"
+                value={user.cpassword}
                 onChange={handleInputs}
                 placeholder="Please Confirm Your Passworde"
                 fullWidth
@@ -217,7 +227,7 @@ const SignUp = () => {
                 variant="contained"
                 style={btnstyle2}
                 fullWidth
-                onClick={PostDate}
+                onClick={PostData}
                 disabled={props.isSubmitting}
               >
                 {props.isSubmitting ? "Loading" : "Sign UP"}
