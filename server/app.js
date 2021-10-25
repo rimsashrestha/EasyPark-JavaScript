@@ -26,10 +26,30 @@ const middleware = (req,res, next) => {
     next();
 }
 
-
 app.use('/guest', guestRouter)
 app.use('/contact_us', contact_usRouter)
 
+var collection;
+app.get('/search', async (req, res) => {
+    try{
+        let result = await collection.aggregate([
+            {
+              $search: {
+                index: 'searchLocations',
+                text: {
+                  query: '{"location" : {$eq = "Indiana"}}',
+                  path: {
+                    'wildcard': '*'
+                  }
+                }
+              }
+            }
+          ]).toArray();
+        res.send(result);
+    }catch (err){
+        res.status(500).send({ message : err.message});
+    }
+});
 
 app.get('/about', middleware, (req, res) => {
     console.log(`Hello my About`);

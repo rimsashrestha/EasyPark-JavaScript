@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Typography, Card, CardContent, Grid, TextField, Button } from '@material-ui/core'
 import bgImage from '../../images/parkingImage3.jpeg'
-
+import location from '../../service/location'
 import axios from 'axios'
 
 const Intro = styled.div`
@@ -38,7 +38,7 @@ const Input = styled.input`
 
 
 function Guest() {
-
+    const [isclicked, setisClicked] = useState(false)
     const [input, setInput] = useState({
         location: '',
         firstName: '',
@@ -59,6 +59,12 @@ function Guest() {
             }
         })
     }
+    function handleClick(event){
+        setisClicked(!isclicked)
+
+    }
+
+
     function handleOnClick(event) {
         event.preventDefault();
         const guestInfo = {
@@ -98,8 +104,18 @@ function Guest() {
                         <Grid container spacing={2}>
                             <Grid xs={12} item>
                                 <TextField name = 'location' value = {input.location} label="Search" type="text" placeholder="Search/Enter Parking or Apartment name"
-                                    placeholderFontSize="20px" onChange={handleChange} required fullWidth/>
+                                    placeholderFontSize="20px" onChange={handleChange} onClick={handleClick} required fullWidth/>
+                                    
+                                    { isclicked && input.location && 
+                                        location.map((element, index) => {
+                                            // string = input.location.toLowerCase()
+                                            if (element.toLowerCase().includes(input.location.toLowerCase())){
+                                               return( <p>{element}</p>)
+                                            }
+                                        }       
+                                        )}
                             </Grid>
+                            
                             <Grid xs={12} sm={6} item>
                                 <TextField onChange={handleChange} name = 'firstName' value = {input.firstName} label="First Name" placeholder="Enter first Name" variant="outlined" fullWidth required  />
                             </Grid>
