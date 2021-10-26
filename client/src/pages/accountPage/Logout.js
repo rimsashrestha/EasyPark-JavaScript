@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory,NavLink } from "react-router-dom";
 
 const Logout = () => {
   const history = useHistory();
@@ -11,22 +11,21 @@ const Logout = () => {
         "Content-Type": "application/json",
       },
       credentials: "include",
-    })
-      .then((res) => {
+    }).then((res) => {
+        
         history.push("/login", { replace: true });
         if ((res.status = !200)) {
           const error = new Error(res.error);
           throw error;
         }
-      })
-      .catch((err) => {
+      }).catch((err) => {
         console.log(err);
       });
   });
 
   return (
     <div>
-      <h1>Logout Page</h1>
+     
     </div>
   );
 };

@@ -1,8 +1,10 @@
-/* eslint-disable */ 
-import React from 'react'
+/* eslint-disable */
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Typography, Card, CardContent, Grid, TextField, Button } from '@material-ui/core'
-import bgImage from '../../images/guestParkingImage.jpeg'
+import bgImage from '../../images/parkingImage3.jpeg'
+
+import axios from 'axios'
 
 const Intro = styled.div`
     display: flex;
@@ -22,7 +24,7 @@ const Intro = styled.div`
 const MainContainer = styled.div`
     background-image: url(${bgImage});
     background-position: center;
-    background-size:cover;
+    background-size: cover;
     
 `
 const Input = styled.input`
@@ -36,6 +38,47 @@ const Input = styled.input`
 
 
 function Guest() {
+
+    const [input, setInput] = useState({
+        location: '',
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
+        unitNumber: '',
+        vehicleMake: '',
+        vehicleModel: '',
+        lisencePlate: '',
+        last4Digits: ''
+    })
+    function handleChange(event) {
+        const { name, value } = event.target;
+        setInput(prevInput => {
+            return {
+                ...prevInput,
+                [name]: value
+            }
+        })
+    }
+    function handleOnClick(event) {
+        event.preventDefault();
+        const guestInfo = {
+            location: input.location,
+            firstName: input.firstName,
+            lastName: input.lastName,
+            phoneNumber: input.phoneNumber,
+            unitNumber: input.unitNumber,
+            vehicleMake: input.vehicleMake,
+            vehicleModel: input.vehicleModel,
+            lisencePlate: input.lisencePlate,
+            last4Digits: input.last4Digits
+        }
+        console.log(guestInfo)
+        axios.post('http://localhost:5000/guest', guestInfo);
+        
+    }
+
+
+
     return (
         <MainContainer>
             <Intro>
@@ -52,41 +95,39 @@ function Guest() {
                     <CardContent>
                         <Typography gutterBottom variant="h5">Guest Vehicle Registration form</Typography>
                         <Typography gutterBottom variant="body" color="textSecondary" component="p">Fill out the form to register your vehicle</Typography>
-                        <form>
-                            <Grid container spacing={2}>
-                                <Grid xs={12} item>
-                                    <Input label="Search" type="text" placeholder="Search/Enter Parking or Apartment name"
-                                        placeholderFontSize="20px" required />
-                                </Grid>
-                                <Grid xs={12} sm={6} item>
-                                    <TextField label="First Name" placeholder="Enter first Name" variant="outlined" fullWidth required />
-                                </Grid>
-                                <Grid xs={12} sm={6} item>
-                                    <TextField label="Last Name" placeholder="Enter Last Name" variant="outlined" fullWidth required />
-                                </Grid>
-                                <Grid xs={12} sm={6} item>
-                                    <TextField label="Phone Number" placeholder="Enter your phone number" variant="outlined" fullWidth required />
-                                </Grid>
-                                <Grid xs={12} sm={6} item>
-                                    <TextField label="Unit number" placeholder="Enter the apt number" variant="outlined" fullWidth required />
-                                </Grid>
-                                <Grid xs={12} sm={6} item>
-                                    <TextField label="Vehicle Make" placeholder="Enter vehicle make e.g. Honda" variant="outlined" fullWidth required />
-                                </Grid>
-                                <Grid xs={12} sm={6} item>
-                                    <TextField label="Vehicle Model" placeholder="Enter vehicle model e.g. Civic " variant="outlined" fullWidth required />
-                                </Grid>
-                                <Grid xs={12} xs={6} item>
-                                    <TextField label="lisence Plate number" placeholder="Enter vehicle plate number" variant="outlined" fullWidth required />
-                                </Grid>
-                                <Grid xs={12} xs={6} item>
-                                    <TextField label="Last 4 digit phoneNumber" placeholder="Enter unit owner last 4 digit of their phone number" variant="outlined" fullWidth required />
-                                </Grid>
-                                <Grid xs={12} item>
-                                    <Button type="submit" variant="contained" color="primary" fullWidth >Register</Button>
-                                </Grid>
+                        <Grid container spacing={2}>
+                            <Grid xs={12} item>
+                                <TextField name = 'location' value = {input.location} label="Search" type="text" placeholder="Search/Enter Parking or Apartment name"
+                                    placeholderFontSize="20px" onChange={handleChange} required fullWidth/>
                             </Grid>
-                        </form>
+                            <Grid xs={12} sm={6} item>
+                                <TextField onChange={handleChange} name = 'firstName' value = {input.firstName} label="First Name" placeholder="Enter first Name" variant="outlined" fullWidth required  />
+                            </Grid>
+                            <Grid xs={12} sm={6} item>
+                                <TextField name = 'lastName' value = {input.lastName} label="Last Name" placeholder="Enter Last Name" variant="outlined" fullfullWidth required onChange={handleChange} />
+                            </Grid>
+                            <Grid xs={12} sm={6} item>
+                                <TextField name = 'phoneNumber' value = {input.phoneNumber} label="Phone Number" placeholder="Enter your phone number" variant="outlined" fullWidth required onChange={handleChange} />
+                            </Grid>
+                            <Grid xs={12} sm={6} item>
+                                <TextField name = 'unitNumber' value = {input.unitNumber} label="Unit Number" placeholder="Enter your unit number" variant="outlined" placeholder="Enter the apt number" variant="outlined" fullWidth required onChange={handleChange} />
+                            </Grid>
+                            <Grid xs={12} sm={6} item>
+                                <TextField name = 'vehicleMake' value = {input.vehicleMake} label="Vehicle Make" placeholder="Enter vehicle make e.g. Honda" variant="outlined" fullWidth required onChange={handleChange} />
+                            </Grid>
+                            <Grid xs={12} sm={6} item>
+                                <TextField name = 'vehicleModel' value = {input.vehicleModel} label="Vehicle Model" placeholder="Enter vehicle model e.g. Civic " variant="outlined" fullWidth required onChange={handleChange} />
+                            </Grid>
+                            <Grid xs={12} xs={6} item>
+                                <TextField name = 'lisencePlate' value = {input.lisencePlate} label="lisence Plate number" placeholder="Enter vehicle plate number" variant="outlined" fullWidth required onChange={handleChange} />
+                            </Grid>
+                            <Grid xs={12} xs={6} item>
+                                <TextField name = 'last4Digits' value = {input.last4Digits} label="Last 4 digit phoneNumber" placeholder="Enter unit owner last 4 digit of their phone number" variant="outlined" fullWidth required onChange={handleChange} />
+                            </Grid>
+                            <Grid xs={12} item>
+                                <Button type="submit" variant="contained" color="primary" fullWidth onClick={handleOnClick}>Register</Button>
+                            </Grid>
+                        </Grid>
                     </CardContent>
                 </Card>
 
@@ -94,5 +135,6 @@ function Guest() {
         </MainContainer>
     )
 }
+
 
 export default Guest
