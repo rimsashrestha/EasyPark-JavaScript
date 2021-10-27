@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import { Typography, Card, CardContent, Grid, TextField, Button } from '@material-ui/core'
 import './Contact.css'
@@ -73,6 +72,5 @@ function Contact_Us() {
         </section>
     )
 }
-
 
 export default Contact_Us;

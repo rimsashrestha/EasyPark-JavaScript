@@ -13,7 +13,8 @@ const Logout = () => {
       credentials: "include",
     })
       .then((res) => {
-        history.push("/login", { replace: true });
+        history.push("/account", { replace: true });
+        // window.location
         if ((res.status = !200)) {
           const error = new Error(res.error);
           throw error;
@@ -24,11 +25,7 @@ const Logout = () => {
       });
   });
 
-  return (
-    <div>
-      <h1>Logout Page</h1>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Logout;
