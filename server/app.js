@@ -14,22 +14,35 @@ app.use(express.json());
 
 const User = require("./model/userSchema");
 const Authenticate = require("./middleware/authenticate");
-app.use(require("./router/auth"));
-app.use(cors());
 
+app.use(cors());
+app.use(require('./router/auth'));
 
 const PORT = process.env.PORT;
 
 
 
-app.get('/', (req, res) => {
- res.send(`Hello world from the server app.js`);
+var collection;
+app.get('/search', async (req, res) => {
+    try{
+        let result = await collection.aggregate([
+            {
+              $search: {
+                index: 'searchLocations',
+                text: {
+                  query: '{"location" : {$eq = "Indiana"}}',
+                  path: {
+                    'wildcard': '*'
+                  }
+                }
+              }
+            }
+          ]).toArray();
+        res.send(result);
+    }catch (err){
+        res.status(500).send({ message : err.message});
+    }
 });
-
-
-
-app.use('/guest', guestRouter)
-app.use('/contact_us', contact_usRouter)
 
 app.get("/about",Authenticate, (req, res) => {
   console.log(`Hello my About`);
