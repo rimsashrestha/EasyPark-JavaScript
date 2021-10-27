@@ -106,7 +106,7 @@ const SignUp = () => {
     } else {
       window.alert("REGISTRATION SUCCESSFUL");
       console.log("SUCCESSFUL REGISTRATION");
-      history.push("/Login");
+      history.push("/login");
     }
   };
 
