@@ -13,6 +13,7 @@ router.post("/", (req, res) => {
     const vehicleModel= req.body.vehicleModel;
     const lisencePlate= req.body.lisencePlate;
     const last4Digits= req.body.last4Digits;
+    const spotNumber = req.body.spotNumber;
     
 
     const registerVehicle = new guestVehicleInfo({
@@ -24,7 +25,8 @@ router.post("/", (req, res) => {
         vehicleMake,
         vehicleModel,
         lisencePlate,
-        last4Digits
+        last4Digits,
+        spotNumber
     })
 
     registerVehicle.save()

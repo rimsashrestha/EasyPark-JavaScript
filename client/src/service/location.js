@@ -1,3 +1,3 @@
-const location = ["Indiana", "The Ranch", "Raider Pass"]
+const location = []
 
 export default location;

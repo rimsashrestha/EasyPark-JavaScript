@@ -38,8 +38,25 @@
   text-align : center;
   font-size :50px;
 }
-.button{
+/* .button{
  
+} */
+
+/* #Parking {
+  margin: 30px 20px 5px;
 }
 
-
+.Slots {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border: 2px solid rgb(255, 0, 0);
+  background-color: rgb(255, 3, 3);
+  margin: 10px 20px;
+ 
+}
+.Slot-head {
+  background-color: rgb(147, 0, 245);
+}
+.chkbx {
+  height: 10px;} */

@@ -36,6 +36,10 @@ const guestSchema = new mongoose.Schema({
         type: 'number',
         required: true,
     },
+    spotNumber:{
+        type: 'string',
+        required: true,
+    },
     date:{
         type:Date,
         default:Date.now,

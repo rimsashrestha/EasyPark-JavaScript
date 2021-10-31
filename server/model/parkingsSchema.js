@@ -5,6 +5,10 @@ const parkingsSchema = new mongoose.Schema({
         type: 'string',
         required: true
     },
+    numbers:{
+        type: 'number',
+        required: true
+    },
     date:{
         type:Date,
         default:Date.now,
