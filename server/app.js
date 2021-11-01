@@ -27,39 +27,39 @@ const PORT = process.env.PORT;
 
 app.use('/guest', guestRouter)
 app.use('/contact_us', contact_usRouter);
-// app.use('/search', ParkingsRouter);
+app.use('/search', ParkingsRouter);
 var collection;
 const client = new MongoClient("mongodb+srv://easypark:easypark@cluster0.hikxz.mongodb.net/easypark?retryWrites=true&w=majority")
 
-app.get('/search', async (req, res) => {
+// app.get('/search', async (req, res) => {
 
   // collection.find(rreq.query.term).toArray(function(err, result){
   //   if (err) throw err;
   //   console.log(result);
   // })
 
-  var regex = new RegExp(req.query["term"], 'i')
-  var locationFinder = parkingLoc.find({location:regex},{'location':1}).sort({"updated_at":-1}).sort({"created_at":-1}).limit(5);
-  locationFinder.exec(function (err,data){
-    // console.log(data)
-    var result = []
-    if(!err){
-      if(data&& data.length && data.length >0){
-        console.log(data)
-        data.forEach(parkings =>{
-          //if(parkings.location.includes())
+  // var regex = new RegExp(req.query["term"], 'i')
+  // var locationFinder = parkingLoc.find({location:regex},{'location':1}).sort({"updated_at":-1}).sort({"created_at":-1}).limit(5);
+  // locationFinder.exec(function (err,data){
+  //   // console.log(data)
+  //   var result = []
+  //   if(!err){
+  //     if(data&& data.length && data.length >0){
+  //       console.log(data)
+  //       data.forEach(parkings =>{
+  //         //if(parkings.location.includes())
           
-          let obj = {
-            id:parkings._id,
-            location: parkings.location,
-            numbers: parkings.numbers
-          }
-          result.push(obj);
-        })
-      }
-      res.jsonp(result);
-    }
-  })  
+  //         let obj = {
+  //           id:parkings._id,
+  //           location: parkings.location,
+  //           numbers: parkings.numbers
+  //         }
+  //         result.push(obj);
+  //       })
+  //     }
+  //     res.jsonp(result);
+  //   }
+  // })  
 
     // try{
     //     let result = await collection.aggregate([
@@ -79,7 +79,7 @@ app.get('/search', async (req, res) => {
     // }catch (err){
     //     res.status(500).send({ message : err.message});
     // }
-});
+// });
 
 app.get("/about",Authenticate, (req, res) => {
   console.log(`Hello my About`);

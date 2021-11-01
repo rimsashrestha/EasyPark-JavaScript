@@ -1,6 +1,7 @@
 const express = require ('express');
 const router = express.Router();
 const guestVehicleInfo = require('../model/guestSchema')
+const twilio = require('twilio');
 
 router.post("/", (req, res) => {
 
@@ -30,6 +31,29 @@ router.post("/", (req, res) => {
     })
 
     registerVehicle.save()
+
+    const accountSid = process.env.accountSid; 
+    const authToken = process.env.authToken; 
+    const client = require('twilio')(accountSid, authToken); 
+             
+          client.messages 
+                .create({ 
+                   body: 'Registration successful for',  
+                   messagingServiceSid: 'MG2669a09a2589e07a26b76e3ba5c3c0bf',      
+                   to: phoneNumber 
+                 }) 
+                .then(message => console.log(message.sid)) 
+                .done();
+
+    
+})
+
+router.get('/', (req, res) => {
+    guestVehicleInfo.find().then((result)=>{
+        res.send(result);
+    }).catch((err)=>{
+        console.log(error)
+    })
 })
 
 module.exports = router
