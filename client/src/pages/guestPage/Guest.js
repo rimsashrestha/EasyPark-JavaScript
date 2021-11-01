@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Typography, Card, CardContent, Grid, TextField, Button } from '@material-ui/core'
 import bgImage from '../../images/parkingImage3.jpeg'
@@ -53,8 +53,52 @@ const initialState = {
     last4Digits: '',
     spotNumber: ''
   };
+  
 
 function Guest() {
+    const [spot, setSpot] = useState([])
+    const [parkings, setparkings] = useState({
+        location: '',
+        number: ''
+    })
+
+    // var allspots=[]
+    // var occupied = []
+
+    useEffect(() => {
+        // async function getData(){
+        //     let response = await fetch('http://localhost:5000/search')
+        //     response = await response.json()
+        //     setSpot(response)
+
+        // }
+        // getData()
+        fetch('http://localhost:5000/search')
+          .then((response) => response.json())
+          .then((data) => setSpot(data))
+          .catch((error) => console.log(error.message));
+      }, []);
+      spot.map(function(spot){
+          parkings.location = spot.location;
+          parkings.number = spot.numbers;
+      })
+      console.log(spot)
+      console.log(parkings)
+
+    //   console.log(spot[0].location)
+
+    //   allspots= spot.map( function (spot) { 
+    //       return spot.spots
+
+    //   })
+    //   occupied= spot.map( function (spot) { 
+    //     return spot.occupied
+
+    // })
+    //   console.log(allspots)
+    //   console.log(occupied)
+
+
 
     const [location, setLocation] = useState([])
     const [isclicked, setisClicked] = useState(false)
@@ -70,6 +114,11 @@ function Guest() {
         last4Digits: '',
         spotNumber: ''
     })
+
+
+    
+
+
     function handleChange(event) {
         const { name, value } = event.target;
         setInput(prevInput => {
@@ -79,10 +128,13 @@ function Guest() {
             }
         })
     }
+
+
     function handleClick(event) {
         setisClicked(!isclicked)
 
     }
+
 
     function handleChange2(event) {
         const { name, value } = event.target;
@@ -93,7 +145,6 @@ function Guest() {
             }
         })
         
-
         axios.get(`http://localhost:5000/search?term=${value}`)
             .then(res => {
                 if(typeof(res) != 'undefined') {
@@ -102,34 +153,34 @@ function Guest() {
                             setLocation(oldArray => [...oldArray, element.location]);
                             console.log(element)
                         }
-                        
                     }) 
                 }
-                
-
-                
-                // console.log(res.data)
             });
-
-
-
     }
+
 
     function handleApt() {
         setisClicked(!isclicked)
 
-
-        var htmlElements = "";
-        for (var i = 0; i < numberofParkings; i++) {
-            console.log(id)
-            htmlElements += `<div className="col">nkdfnkjbdf</div>`
-        }
+        // var htmlElements = "";
+        // for (var i = 0; i < numberofParkings; i++) {
+        //     console.log(id)
+        //     htmlElements += `<div className="col">nkdfnkjbdf</div>`
+        // }
         
-        var container = document.getElementById("container");
-        container.innerHTML = htmlElements;
+        // var container = document.getElementById("container");
+        // container.innerHTML = htmlElements;
+
+        // for (var i =0; i < occupied.length; i++) {
+        //     if(allspots.includes(occupied[i])) {
+        //         allspots[0].splice(i,1)
+        //     }
+        // }
+        // console.log(allspots)
         
     }
     
+
     function handleOnClick(event) {
         event.preventDefault();
         const guestInfo = {
@@ -145,13 +196,28 @@ function Guest() {
             spotNumber: input.spotNumber
         }
         console.log(guestInfo)
-        axios.post('http://localhost:5000/guest', guestInfo);
+
+        console.log(spot.location)
+
+   
+        if(parkings.location != guestInfo.location){
+            console.log(spot.location)
+            window.alert("The apartment does not exist")
+        }else{
+            axios.post('http://localhost:5000/guest', guestInfo);
+            window.alert('Registration Successful, Thank you!')
+        
+        }
+
+
+        
 
 
         setInput({ ...initialState });
-        window.alert('Registration Successful, Thank you!')
+        
     }
 
+    
     return (
         <MainContainer>
             <Intro>
@@ -230,18 +296,12 @@ function Guest() {
                     </Card>
 
                 </form>
-                <div id="container" className="container">
-                                    
+                {/* <div id="container" className="container">
+                    {
+                     
 
-                </div>
-                <script>{
-                    function insertSpotNumber(event){
-                        spotNumber = event.target.value;
-                        console.log(spotNumber)
-                    }
-                    }
+                </div> */}
                 
-                </script>
             </div>                          
         </MainContainer>
     )
